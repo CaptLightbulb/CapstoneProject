@@ -2,5 +2,5 @@ Trello Board:
 https://trello.com/b/Fo072hA7
 
 
-BitBucket Repository:
-https://bitbucket.org/bl0wtntup/capstone-project/src/main/
+GitHub Repository:
+https://github.com/CaptLightbulb/CapstoneProject
