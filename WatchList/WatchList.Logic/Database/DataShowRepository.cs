@@ -35,16 +35,16 @@ namespace WatchList.Logic.Database
                 return returnList;
             }
             return null;
+        }
 
-            public IEnumerable<Show> GetShowsByName()
-            {
-                var sortedList =
-                    from show in Context.Shows
-                    orderby show.Name
-                    select show;
+        public IEnumerable<Show> GetShowsByName()
+        {
+            var sortedList =
+                from show in Context.Shows
+                orderby show.Name
+                select show;
 
-                return sortedList;
-            }
+            return sortedList;
         }
     }
 }

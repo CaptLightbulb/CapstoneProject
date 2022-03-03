@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9tcqkrF3b3XagCwvY+OG+fajAwfIpOo6vQCJzxW0IS6iIeLcrZwghz5p5lr1xyEJsDQ8aIGERXxlOFojpA+UQg==",
+  "dgSpecHash": "NyjZvOPp3RrahXwQmBnrxHboOIImlvDPt1M6132qLq1tG2W3SVYq1AR61ePgJGA0TwnVHNfhaG1IXLEd4xnvDA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\4400112045\\source\\repos\\capstone-project\\WatchList\\WatchList.Logic\\WatchList.Logic.csproj",
+  "projectFilePath": "C:\\Users\\4400112045\\Source\\Repos\\CapstoneProject\\WatchList\\WatchList.Logic\\WatchList.Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\4400112045\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\4400112045\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

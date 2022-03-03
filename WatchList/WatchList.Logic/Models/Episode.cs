@@ -17,5 +17,6 @@ namespace WatchList.Logic.Models
         public int SeasonId { get; set; }
         public int Score { get; set; }
         public int EpisodeId { get; set; }
+        public int Order { get; set; }
     }
 }

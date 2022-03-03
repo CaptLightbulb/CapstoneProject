@@ -14,6 +14,7 @@ namespace WatchList.Logic.Models
         public int ShowId { get; set; }
         public int Score { get; set; }
         public int SeasonId { get; set; }
+        public int Order { get; set; }
         public string Status { get; set; }
         private int statusNum;
         public int StatusNum //Propertie to change the value of string Status to match the number given

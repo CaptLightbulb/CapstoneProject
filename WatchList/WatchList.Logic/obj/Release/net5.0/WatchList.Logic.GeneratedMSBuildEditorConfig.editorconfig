@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = WatchList.Logic
-build_property.ProjectDir = C:\Users\4400112045\Source\Repos\CapstoneProject\WatchList\WatchList.Logic\
+build_property.ProjectDir = C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.Logic\
