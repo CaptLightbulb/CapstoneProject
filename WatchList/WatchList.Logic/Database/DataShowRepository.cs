@@ -7,7 +7,7 @@ using WatchList.Logic.Models;
 
 namespace WatchList.Logic.Database
 {
-    class DataShowRepository : DataRepository<Show>
+    public class DataShowRepository : DataRepository<Show>
     {
         WatchListDbContext Context;
 

@@ -1,0 +1,20 @@
+﻿@using WatchList.Logic.Models;
+@using WatchList.Logic.Database;
+
+@model WatchList.WebClient.Models.AddShowModel
+
+<form asp-action="AddShow">
+    <label>Name: </label>
+    <input type="text" asp-for="Name" value=""/> <br/>
+
+    <label>Seasons: </label>
+    <input type="number" asp-for="SeasonAmt" value="0" /> <br/>
+
+    <label>Status: </label>
+    <select asp-for="Status" name="SelectedStatus" id="SelectedStatus">
+        <option value="0">Plan To Watch</option>
+        <option value="1">Watching</option>
+        <option value="2">Finished</option>
+    </select> <br/>
+    <input type="submit" value="Submit" class="btn btn-primary" /> 
+</form>

@@ -8,7 +8,7 @@ using WatchList.Logic.Models;
 
 namespace WatchList.Logic.Database
 {
-    class WatchListDbContext : DbContext
+    public class WatchListDbContext : DbContext
     {
         public DbSet<Show> Shows { get; set; } //Set up DbSet properties
         public DbSet<Season> Seasons { get; set; }

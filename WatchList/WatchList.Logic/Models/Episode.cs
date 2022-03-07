@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WatchList.Logic.Models
 {
-    class Episode
+    public class Episode
     {
         public Show Show { get; set; } //Set up properties
         [ForeignKey("Show")]

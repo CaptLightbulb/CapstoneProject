@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WatchList.Logic.Models
 {
-    class Show
+    public class Show
     {
         public string Name { get; set; } //Set up properties
         public int Score { get; set; }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace WatchList.Logic.Database
 {
-    class DataUnitOfWork
+    public class DataUnitOfWork
     {
-        public WatchListDbContext Context;
+        public WatchListDbContext Context { get; set; }
         public DataShowRepository Shows;
         public DataSeasonRepository Seasons;
         public DataEpisodeRepository Episodes;

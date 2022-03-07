@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WatchList.Logic.Database
 {
-    class DataRepository<K> where K : class
+    public class DataRepository<K> where K : class
     {
         WatchListDbContext Context;
         public DataRepository(WatchListDbContext context) //Constructor to initialize database context
