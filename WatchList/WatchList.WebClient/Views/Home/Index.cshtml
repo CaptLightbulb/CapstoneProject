@@ -32,8 +32,9 @@
                 @Html.DisplayFor(modelItem => show.Score)
             </td>
             <td>
-                <form asp-action="ChangeStatus">
-                    
+                <form asp-action="DeleteShow">
+                    <input type="number" hidden="hidden" value="@show.ShowId" name="ShowId"/>
+                    <input type="Submit" value="Delete" class="btn-danger" />
                 </form>
             </td>
         </tr>

@@ -3,7 +3,46 @@
 
 @model WatchList.WebClient.Models.AddShowModel
 
-<form asp-action="AddShow">
+
+@{
+
+    ViewBag.Title = "Status Select";
+
+}
+
+@using (Html.BeginForm("AddShow", "Home")) {
+
+    <fieldset>
+            
+            <label>Name: </label>
+            @Html.TextBox("Name", "")  <br/>
+
+
+            <label># of Seasons: </label>
+            <input type="number" id="SeasonAmt" name="SeasonAmt" value="0" />  <br/>
+
+
+            <label>Status: </label>
+            @Html.DropDownList("StatusType")  <br/>
+
+        <p>
+
+            <input type="submit" value="Submit" />
+
+        </p>
+
+    </fieldset>
+
+}
+
+
+
+
+
+
+
+<!---
+<form asp-action="AddShow" method="get">
     <label>Name: </label>
     <input type="text" asp-for="Name" value=""/> <br/>
 
@@ -18,3 +57,4 @@
     </select> <br/>
     <input type="submit" value="Submit" class="btn btn-primary" /> 
 </form>
+-->

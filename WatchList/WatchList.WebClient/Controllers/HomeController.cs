@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -45,16 +46,33 @@ namespace WatchList.WebClient.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult AddShow([Bind("Name, SeasonAmt, Status")] AddShowModel modelShow) //method to add a new show to the database and/or redirect to the 'AddShow' Page
+        public IActionResult AddShow(string Name, int SeasonAmt, string StatusType) //method to add a new show to the database and/or redirect to the 'AddShow' Page
         {
-            if (modelShow.Name != null)
+            if (Name != null)
             {
-                var addShow = new Show { Name = modelShow.Name, StatusNum = modelShow.Status};
+                var addShow = new Show { Name = Name, StatusNum = int.Parse(StatusType)};
 
                 UOW.Shows.Add(addShow);
                 UOW.Complete();
             }
+
+            List<SelectListItem> items = new List<SelectListItem>();
+            items.Add(new SelectListItem { Text = "Plan To Watch", Value = "0" , Selected=true});
+            items.Add(new SelectListItem { Text = "Watching", Value = "1" });
+            items.Add(new SelectListItem { Text = "Finished", Value = "2"});
+
+            ViewBag.StatusType = items;
+
             return View();
+        }
+
+        public IActionResult DeleteShow(int ShowId)
+        {
+
+            UOW.Shows.Remove(UOW.Shows.Find(ShowId));
+            UOW.Complete();
+
+            return View("Index",ListModel);
         }
     }
 }
