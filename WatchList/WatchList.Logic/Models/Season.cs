@@ -12,6 +12,8 @@ namespace WatchList.Logic.Models
         public Show Show { get; set; } //Set up properties
         [ForeignKey("Show")]
         public int ShowId { get; set; }
+        public int EpisodeAmt { get; set; }
+        public int EpisodesWatched { get; set; }
         public int Score { get; set; }
         public int SeasonId { get; set; }
         public int Order { get; set; }
@@ -27,10 +29,10 @@ namespace WatchList.Logic.Models
             {
                 switch (value)
                 {
-                    case 0:
+                    case 1:
                         Status = "Plan To Watch";
                         break;
-                    case 1:
+                    case 0:
                         Status = "Watching";
                         break;
                     case 2:
@@ -40,5 +42,6 @@ namespace WatchList.Logic.Models
                 statusNum = value;
             }
         }
+
     }
 }

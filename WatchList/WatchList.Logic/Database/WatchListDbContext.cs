@@ -12,7 +12,6 @@ namespace WatchList.Logic.Database
     {
         public DbSet<Show> Shows { get; set; } //Set up DbSet properties
         public DbSet<Season> Seasons { get; set; }
-        public DbSet<Episode> Episodes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //Instructions on which Database to use during configuration
         {

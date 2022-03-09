@@ -54,8 +54,6 @@ C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\De
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.TagHelpers.input.cache
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.TagHelpers.output.cache
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.RazorCoreGenerate.cache
-C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -70,3 +68,4 @@ C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\De
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.pdb
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.genruntimeconfig.cache
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\AddShow.cshtml.g.cs
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewAll.cshtml.g.cs

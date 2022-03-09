@@ -15,15 +15,17 @@
     <fieldset>
             
             <label>Name: </label>
-            @Html.TextBox("Name", "")  <br/>
-
+            <input type="text" name="Name" value=""/>  <br/>
 
             <label># of Seasons: </label>
             <input type="number" id="SeasonAmt" name="SeasonAmt" value="0" />  <br/>
 
-
             <label>Status: </label>
-            @Html.DropDownList("StatusType")  <br/>
+            <select name="StatusType" id="StatusType">
+                <option value="0">Watching</option>
+                <option value="1" >Plan To Watch</option>
+                <option value="2">Finished</option>
+            </select> <br/>
 
         <p>
 

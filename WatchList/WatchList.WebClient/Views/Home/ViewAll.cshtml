@@ -1,0 +1,86 @@
+﻿@using WatchList.Logic.Database;
+@using WatchList.Logic.Models;
+
+@{
+    ViewData["Title"] = "Home Page";
+    
+}
+@model WatchList.WebClient.Models.ListViewModel
+@{string[] StatusList = new string[]{"Watching", "Plan To Watch", "Finished"};}
+
+
+<form asp-action="SearchName">
+    <input type="text" name="SearchKey" />
+    <input type="Submit" value="Search" class="btn btn-primary" />
+    <a asp-controller="Home" asp-action="ResetSearch" class="btn btn-primary">Reset</a>
+</form>
+<br/>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Score
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var show in Model.UOW.Shows.GetShowsByStatus(Model.SearchKey))
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => show.Name)
+            </td>
+                <form asp-action="ChangeInfo" asp-controller="home">
+                    <td>
+                        <select name="ScoreNum">
+                            @for(int i = 0; i < 11; i++)
+                                {
+                                if (show.Score == i)
+                                {
+                                    <option value="@i" selected="selected">@i</option>
+                                }
+                                else
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <select name="StatusType">
+                        
+                                @for(int i = 0; i < 3; i++)
+                                {
+                                    if(show.StatusNum == i)
+                                    {
+                                        <option value="@i" selected="selected">@StatusList[i]</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i" >@StatusList[i]</option>
+                                    }
+                                }
+                        </select>
+                        <input type="submit" value="save" class="btn-primary"/>
+                        <input type="number" name="ShowId" value="@show.ShowId" hidden="hidden" />
+                    </td>
+                </form>
+            <td>
+                <form asp-action="DeleteShow">
+                    <input type="number" hidden="hidden" value="@show.ShowId" name="ShowId"/>
+                    <input type="Submit" value="Delete" class="btn-danger" />
+                </form>
+            </td>
+        </tr>
+            }
+    </tbody>
+</table>

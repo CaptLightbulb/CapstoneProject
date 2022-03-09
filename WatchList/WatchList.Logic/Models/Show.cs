@@ -23,9 +23,9 @@ namespace WatchList.Logic.Models
             {
                 switch (value)
                 {
-                    case 0: Status = "Plan To Watch";
+                    case 1: Status = "Plan To Watch";
                         break;
-                    case 1: Status = "Watching";
+                    case 0: Status = "Watching";
                         break;
                     case 2: Status = "Finished";
                         break;

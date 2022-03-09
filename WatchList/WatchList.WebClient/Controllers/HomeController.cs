@@ -30,14 +30,7 @@ namespace WatchList.WebClient.Controllers
 
         public IActionResult Index()
         {
-
-
-            return View(ListModel);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View("ViewAll", ListModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -56,13 +49,6 @@ namespace WatchList.WebClient.Controllers
                 UOW.Complete();
             }
 
-            List<SelectListItem> items = new List<SelectListItem>();
-            items.Add(new SelectListItem { Text = "Plan To Watch", Value = "0" , Selected=true});
-            items.Add(new SelectListItem { Text = "Watching", Value = "1" });
-            items.Add(new SelectListItem { Text = "Finished", Value = "2"});
-
-            ViewBag.StatusType = items;
-
             return View();
         }
 
@@ -72,7 +58,34 @@ namespace WatchList.WebClient.Controllers
             UOW.Shows.Remove(UOW.Shows.Find(ShowId));
             UOW.Complete();
 
-            return View("Index",ListModel);
+            return Index();
+        }
+
+        public IActionResult ChangeInfo(int ShowId, string ScoreNum, string StatusType)
+        {
+            UOW.Shows.Find(ShowId).Score = int.Parse(ScoreNum);
+            UOW.Shows.Find(ShowId).StatusNum = int.Parse(StatusType);
+            UOW.Complete();
+
+            return Index();
+        }
+
+        public IActionResult SearchName(string SearchKey)
+        {
+            ListModel.SearchKey = SearchKey;
+
+            return Index();
+        }
+
+        public IActionResult ResetSearch()
+        {
+            ListModel.SearchKey = "";
+
+            return Index();
         }
     }
 }
+
+/*
+
+*/
