@@ -33,5 +33,10 @@ namespace WatchList.Logic.Database
             addSeason.Order = GetSeasonsInOrder(showId).Count() + 1;
             Context.Seasons.Add(addSeason);
         }
+
+        public Season FindById(int seasonId)
+        {
+            return Context.Seasons.FirstOrDefault(s => s.SeasonId == seasonId);
+        }
     }
 }

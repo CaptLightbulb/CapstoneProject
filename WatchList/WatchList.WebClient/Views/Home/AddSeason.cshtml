@@ -1,0 +1,44 @@
+﻿@using WatchList.Logic.Database;
+@using WatchList.Logic.Models;
+
+@model WatchList.WebClient.Models.AddSeasonModel
+@{string[] StatusList = new string[]{"Watching", "Plan To Watch", "Finished"};}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                Episodes Watched:
+            </th>
+            <th>
+                Episodes Total:
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var season in Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId).Where(s => s.EpisodeAmt == 0))
+            {
+        <tr>
+            <td>
+                Season @season.Order
+            </td>
+            <form asp-action="CreateSeason" asp-controller="home">
+                <td>
+                    <input type="number" name="EpisodeWatch" value="@season.EpisodesWatched" />
+                </td>
+                <td>
+                    <input type="number" name="EpisodeNum" value="@season.EpisodeAmt" />
+                </td>
+                <td>
+                    <input type="number" name="SeasonId" value="@season.SeasonId" hidden="hidden" />
+                    <input type="Submit" value="Submit" class="btn-primary" />
+                </td>
+            </form>
+        </tr>
+            }
+    </tbody>
+</table>

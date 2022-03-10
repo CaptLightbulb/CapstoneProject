@@ -69,3 +69,4 @@ C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\De
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.genruntimeconfig.cache
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\AddShow.cshtml.g.cs
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewAll.cshtml.g.cs
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\AddSeason.cshtml.g.cs

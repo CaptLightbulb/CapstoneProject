@@ -18,6 +18,7 @@ namespace WatchList.WebClient.Controllers
         public WatchListDbContext Context;
         public DataUnitOfWork UOW;
         public ListViewModel ListModel;
+        public AddSeasonModel seasonModel;
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -26,6 +27,7 @@ namespace WatchList.WebClient.Controllers
             Context = new WatchListDbContext();
             UOW = new DataUnitOfWork(Context);
             ListModel = new ListViewModel { UOW = UOW};
+            seasonModel = new AddSeasonModel { UOW = UOW};
         }
 
         public IActionResult Index()
@@ -82,6 +84,32 @@ namespace WatchList.WebClient.Controllers
             ListModel.SearchKey = "";
 
             return Index();
+        }
+
+        public IActionResult CreateSeason(int EpisodeWatch, int EpisodeNum, int SeasonId)
+        {
+            if(EpisodeNum != 0)
+            {
+                var season = UOW.Seasons.FindById(SeasonId);
+
+                season.EpisodeAmt = EpisodeNum;
+                season.EpisodesWatched = EpisodeWatch;
+
+                if(season.EpisodesWatched == 0)
+                {
+                    season.StatusNum = 1;
+                } else
+                if(season.EpisodesWatched >= season.EpisodeAmt)
+                {
+                    season.EpisodesWatched = season.EpisodeAmt;
+                    season.StatusNum = 2;
+                }
+
+                UOW.Seasons.Add(season);
+                UOW.Complete();
+            }
+
+            return View();
         }
     }
 }
