@@ -2,7 +2,6 @@
 @using WatchList.Logic.Models;
 
 @model WatchList.WebClient.Models.AddSeasonModel
-@{string[] StatusList = new string[]{"Watching", "Plan To Watch", "Finished"};}
 
 <table class="table">
     <thead>
@@ -27,16 +26,16 @@
                 Season @season.Order
             </td>
             <form asp-action="CreateSeason" asp-controller="home">
-                <td>
-                    <input type="number" name="EpisodeWatch" value="@season.EpisodesWatched" />
-                </td>
-                <td>
-                    <input type="number" name="EpisodeNum" value="@season.EpisodeAmt" />
-                </td>
-                <td>
-                    <input type="number" name="SeasonId" value="@season.SeasonId" hidden="hidden" />
-                    <input type="Submit" value="Submit" class="btn-primary" />
-                </td>
+                    <td>
+                        <input type="number" name="EpisodeWatch" value="@season.EpisodesWatched" />
+                    </td>
+                    <td>
+                        <input type="number" name="EpisodeNum" value="@season.EpisodeAmt" />
+                    </td>
+                    <td>
+                        <input type="number" name="SeasonId" value="@season.SeasonId" hidden="hidden" />
+                        <input type="Submit" value="Submit" class="btn-dark" />
+                    </td>
             </form>
         </tr>
             }

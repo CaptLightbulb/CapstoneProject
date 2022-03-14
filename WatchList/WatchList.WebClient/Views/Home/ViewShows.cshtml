@@ -11,8 +11,8 @@
 
 <form asp-action="SearchName">
     <input type="text" name="SearchKey" />
-    <input type="Submit" value="Search" class="btn btn-primary" />
-    <a asp-controller="Home" asp-action="ResetSearch" class="btn btn-primary">Reset</a>
+    <input type="Submit" value="Search" class="btn-sm btn-dark" />
+    <a asp-controller="Home" asp-action="ResetSearch" class="btn-sm btn-dark">Reset</a>
 </form>
 <br/>
 
@@ -27,6 +27,8 @@
             </th>
             <th>
                 Status
+            </th>
+            <th>
             </th>
             <th>
             </th>
@@ -70,16 +72,22 @@
                                     }
                                 }
                         </select>
-                        <input type="submit" value="save" class="btn-primary"/>
+                        <input type="submit" value="Save" class="btn-dark"/>
                         <input type="number" name="ShowId" value="@show.ShowId" hidden="hidden" />
                     </td>
                 </form>
-            <td>
-                <form asp-action="DeleteShow">
-                    <input type="number" hidden="hidden" value="@show.ShowId" name="ShowId"/>
-                    <input type="Submit" value="Delete" class="btn-danger" />
-                </form>
-            </td>
+                    <td>
+                        <form asp-action="ViewSeasons" class="float-left">
+                            <input type="number" value="@show.ShowId" name="ShowId" hidden="hidden" />
+                            <input type="submit" value="View Seasons" class="btn-dark" />
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="DeleteShow" class="float-right">
+                            <input type="number" hidden="hidden" value="@show.ShowId" name="ShowId" />
+                            <input type="Submit" value="Delete" class="btn-danger" />
+                        </form>
+                    </td>
         </tr>
             }
     </tbody>
