@@ -2,6 +2,10 @@
 
 @model WatchList.WebClient.Models.ListViewModel 
 
+<h1>
+    @Model.UOW.Shows.Find(Model.ShowId).Name
+</h1>
+
 <table class="table">
     <thead>
         <tr>

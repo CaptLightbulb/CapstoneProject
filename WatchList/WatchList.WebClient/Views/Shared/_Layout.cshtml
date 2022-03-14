@@ -10,21 +10,18 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 w-100">
-            <div class="container float-left">
-                <h1>
-                    <a class="card-header text-black-50 text-decoration-none float-left" asp-area="" asp-controller="Home" asp-action="Index">Watch List</a>
+            <div class="container w-100">
+                <h1 class="float-left">
+                    <a class="card-header text-black-50 text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">Watch List</a>
                 </h1>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="float-right">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="navbar-brand text-white btn btn-dark " asp-area="" asp-controller="Home" asp-action="Index">View Shows</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="navbar-brand text-white btn btn-dark mr-auto float-right" asp-area="" asp-controller="Home" asp-action="AddShow">Add Show</a>
+                            <a class="navbar-brand text-white btn btn-dark mr-auto" asp-area="" asp-controller="Home" asp-action="AddShow">Add Show</a>
                         </li>
                     </ul>
                 </div>

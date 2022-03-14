@@ -112,16 +112,6 @@ namespace WatchList.WebClient.Controllers
                 season.EpisodeAmt = EpisodeNum;
                 season.EpisodesWatched = EpisodeWatch;
 
-                if(season.EpisodesWatched == 0)
-                {
-                    season.StatusNum = 1;
-                } else
-                if(season.EpisodesWatched >= season.EpisodeAmt)
-                {
-                    season.EpisodesWatched = season.EpisodeAmt;
-                    season.StatusNum = 2;
-                }
-
                 UOW.Complete();
 
                 seasonModel.ShowId = season.ShowId;
