@@ -32,7 +32,7 @@ namespace WatchList.WebClient.Controllers
 
         public IActionResult Index()
         {
-            return View("ViewAll", ListModel);
+            return View("ViewShows", ListModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -49,6 +49,19 @@ namespace WatchList.WebClient.Controllers
 
                 UOW.Shows.Add(addShow);
                 UOW.Complete();
+
+                int showId = UOW.Shows.Find(Name).FirstOrDefault().ShowId;
+
+                for (int i = 0; i < SeasonAmt; i++)
+                {
+                    var addSeason = new Season();
+                    addSeason.ShowId = showId;
+                    addSeason.Order = i + 1;
+                    UOW.Seasons.Add(addSeason);
+                }
+                UOW.Complete();
+                seasonModel.ShowId = showId;
+                return CreateSeason();
             }
 
             return View();
@@ -56,7 +69,11 @@ namespace WatchList.WebClient.Controllers
 
         public IActionResult DeleteShow(int ShowId)
         {
-
+            List<Season> seasonList = UOW.Seasons.GetSeasonsInOrder(ShowId).ToList();
+            foreach (var season in seasonList)
+            {
+                DeleteSeason(season.SeasonId, false);
+            }
             UOW.Shows.Remove(UOW.Shows.Find(ShowId));
             UOW.Complete();
 
@@ -86,7 +103,7 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult CreateSeason(int EpisodeWatch, int EpisodeNum, int SeasonId)
+        public IActionResult CreateSeason(int EpisodeWatch = 0, int EpisodeNum = 0, int SeasonId = 0)
         {
             if(EpisodeNum != 0)
             {
@@ -95,21 +112,50 @@ namespace WatchList.WebClient.Controllers
                 season.EpisodeAmt = EpisodeNum;
                 season.EpisodesWatched = EpisodeWatch;
 
-                if(season.EpisodesWatched == 0)
-                {
-                    season.StatusNum = 1;
-                } else
-                if(season.EpisodesWatched >= season.EpisodeAmt)
-                {
-                    season.EpisodesWatched = season.EpisodeAmt;
-                    season.StatusNum = 2;
-                }
-
-                UOW.Seasons.Add(season);
                 UOW.Complete();
+
+                seasonModel.ShowId = season.ShowId;
             }
 
-            return View();
+            return View("CreateSeason", seasonModel);
+        }
+
+        public IActionResult ViewSeasons(int ShowId = 0)
+        {
+            ListModel.ShowId = ShowId;
+            return View("ViewSeasons",ListModel);
+        }
+
+        public IActionResult ChangeSeason(int EpisodeWatch, int SeasonId, int ScoreNum)
+        {
+            var season = UOW.Seasons.FindById(SeasonId);
+            season.EpisodesWatched = EpisodeWatch;
+            season.Score = ScoreNum;
+            UOW.Complete();
+
+            return ViewSeasons(season.ShowId);
+        }
+
+        public IActionResult DeleteSeason(int SeasonId, bool callFromView = true)
+        {
+            var season = UOW.Seasons.FindById(SeasonId);
+            foreach (var upperSeason in UOW.Seasons.GetSeasonsInOrder(season.ShowId).Where(s => s.Order > season.Order))
+            {
+                upperSeason.Order--;
+            }
+
+            UOW.Seasons.Remove(season);
+            UOW.Complete();
+
+            if (callFromView)
+            {
+                return ViewSeasons(season.ShowId);
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }

@@ -1,0 +1,79 @@
+﻿@using WatchList.Logic.Models;
+
+@model WatchList.WebClient.Models.ListViewModel 
+
+<h1>
+    @Model.UOW.Shows.Find(Model.ShowId).Name
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+            </th>
+            <th>
+                Score
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Episodes Watched
+            </th>
+            <th>
+                Episodes Total
+            </th>
+            <th>
+            </th>
+            <th>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var season in Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId))
+        {
+        <tr>
+            <td>
+                Season @season.Order
+            </td>
+            <form asp-action="ChangeSeason" asp-controller="home">
+                <td>
+                    <select name="ScoreNum">
+                        @for (int i = 0; i < 11; i++)
+                        {
+                            if (season.Score == i)
+                            {
+                                <option value="@i" selected="selected">@i</option>
+                            }
+                            else
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    @season.Status
+                </td>
+                <td>
+                    <input type="number" name="EpisodeWatch" value="@season.EpisodesWatched" />
+                </td>
+                <td>
+                    <label>/</label>
+                    @season.EpisodeAmt
+                </td>
+                <td>
+                    <input type="number" name="SeasonId" value="@season.SeasonId" hidden="hidden" />
+                    <input type="Submit" value="Save" class="btn-dark" />
+                </td>
+            </form>
+            <td>
+                <form asp-action="DeleteSeason">
+                    <input type="number" name="SeasonId" value="@season.SeasonId" hidden="hidden" />
+                    <input type="submit" value="Delete" class="btn-danger" />
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

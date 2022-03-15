@@ -7,5 +7,6 @@ namespace WatchList.WebClient.Models
     {
         public DataUnitOfWork UOW { get; set; }
         public string SearchKey { get; set; } = "";
+        public int ShowId { get; set; }
     }
 }
