@@ -28,7 +28,24 @@ namespace WatchList.Logic.Database
             return Context.SaveChanges();
         }
 
-        public void CheckSeasonStatus()
+        public void CascadeStatus()
+        {
+            List<Show> showList = Shows.GetAll().ToList();
+
+            foreach(var season in Context.Seasons)
+            {
+                if (showList.FirstOrDefault(sh => sh.ShowId == season.ShowId).StatusNum == 2) season.StatusNum = 2;
+                if(showList.FirstOrDefault(sh => sh.ShowId == season.ShowId).StatusNum == 1) season.StatusNum = 1;
+            }
+
+            foreach(var season in Context.Seasons)
+            {
+                if (season.StatusNum == 2) season.EpisodesWatched = season.EpisodeAmt;
+                if (season.StatusNum == 1) season.EpisodesWatched = 0;
+            }
+        }
+
+        private void CheckSeasonStatus()
         {
             foreach(var season in Context.Seasons)
             {
@@ -49,7 +66,7 @@ namespace WatchList.Logic.Database
             }
         }
 
-        public void CheckShowStatus()
+        private void CheckShowStatus()
         {
             List<Season> seasonList = Seasons.GetAll().ToList();
 

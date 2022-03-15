@@ -12,24 +12,26 @@
 
 @using (Html.BeginForm("AddShow", "Home")) {
 
-    <fieldset>
-            
-            <label>Name: </label>
-            <input type="text" name="Name" value=""/>  <br/>
+    <fieldset class="w-25">
+            <strong>
 
-            <label># of Seasons: </label>
-            <input type="number" id="SeasonAmt" name="SeasonAmt" value="0" />  <br/>
+            <label>Name: </label>
+            <input type="text" name="Name" value="" class="float-right" />  <br/>
+
+            <label>Seasons: </label>
+            <input type="number" id="SeasonAmt" name="SeasonAmt" value="0" class="float-right" />  <br/>
 
             <label>Status: </label>
-            <select name="StatusType" id="StatusType">
+            <select name="StatusType" id="StatusType" class="float-right">
                 <option value="0">Watching</option>
                 <option value="1" >Plan To Watch</option>
                 <option value="2">Finished</option>
             </select> <br/>
 
+            </strong>
         <p>
 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" class="btn btn-dark float-right" />
 
         </p>
 

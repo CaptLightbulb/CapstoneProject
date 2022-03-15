@@ -9,8 +9,24 @@
 @{string[] StatusList = new string[]{"Watching", "Plan To Watch", "Finished"};}
 
 
-<form asp-action="SearchName">
-    <input type="text" name="SearchKey" />
+<form asp-action="SearchShow">
+    <label>Sort by Status: </label>
+    <select name="statusKey">
+        <option value="-1">All</option>
+        @for(int i = 0; i < 3; i++)
+            {
+                if(@Model.StatusKey == i)
+                {
+                    <option value="@i" selected="selected">@StatusList[i]</option>
+                }
+                else
+                {
+                    <option value="@i" >@StatusList[i]</option>
+                }
+            }
+    </select>
+    <label> Name: </label>
+    <input type="text" name="nameKey" value="@Model.NameKey"/>
     <input type="Submit" value="Search" class="btn-sm btn-dark" />
     <a asp-controller="Home" asp-action="ResetSearch" class="btn-sm btn-dark">Reset</a>
 </form>
@@ -35,26 +51,26 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var show in Model.UOW.Shows.GetShowsByStatus(Model.SearchKey))
+        @foreach(var show in Model.UOW.Shows.GetShowsByStatus(Model.NameKey, Model.StatusKey))
             {
         <tr>
-            <td>
+            <td class="font-weight-bold">
                 @Html.DisplayFor(modelItem => show.Name)
             </td>
-                <form asp-action="ChangeInfo" asp-controller="home">
+                <form asp-action="ChangeShowInfo" asp-controller="home">
                     <td>
                         <select name="ScoreNum">
                             @for(int i = 0; i < 11; i++)
                                 {
-                                if (show.Score == i)
-                                {
-                                    <option value="@i" selected="selected">@i</option>
+                                    if (show.Score == i)
+                                    {
+                                        <option value="@i" selected="selected">@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
                                 }
-                                else
-                                {
-                                    <option value="@i">@i</option>
-                                }
-                            }
                         </select>
                     </td>
                     <td>

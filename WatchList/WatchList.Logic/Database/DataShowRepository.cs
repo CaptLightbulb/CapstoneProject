@@ -47,13 +47,26 @@ namespace WatchList.Logic.Database
             return sortedList;
         }
 
-        public IEnumerable<Show> GetShowsByStatus(string nameKey = "")
+        public IEnumerable<Show> GetShowsByStatus(string nameKey = "", int statusKey = -1)
         {
-            var sortedList =
+            IQueryable<Show> sortedList;
+
+            if(statusKey > -1)
+            {
+                sortedList =
+                 from show in Context.Shows
+                 where show.Name.ToUpper().Contains(nameKey.ToUpper()) && show.StatusNum == statusKey
+                 orderby show.StatusNum, show.Name
+                 select show;
+            }
+            else
+            {
+                sortedList =
                 from show in Context.Shows
                 where show.Name.ToUpper().Contains(nameKey.ToUpper())
                 orderby show.StatusNum, show.Name
                 select show;
+            }
 
             return sortedList;
         }

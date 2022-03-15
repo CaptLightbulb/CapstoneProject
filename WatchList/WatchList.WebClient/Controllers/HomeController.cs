@@ -80,25 +80,31 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult ChangeInfo(int ShowId, string ScoreNum, string StatusType)
+        public IActionResult ChangeShowInfo(int ShowId, string ScoreNum, string StatusType)
         {
             UOW.Shows.Find(ShowId).Score = int.Parse(ScoreNum);
             UOW.Shows.Find(ShowId).StatusNum = int.Parse(StatusType);
+
+            UOW.CascadeStatus();
             UOW.Complete();
 
             return Index();
         }
 
-        public IActionResult SearchName(string SearchKey)
+        public IActionResult SearchShow(string statusKey, string nameKey)
         {
-            ListModel.SearchKey = SearchKey;
+            if (nameKey == null) nameKey = "";
+
+            ListModel.NameKey = nameKey;
+            ListModel.StatusKey = int.Parse(statusKey);
 
             return Index();
         }
 
         public IActionResult ResetSearch()
         {
-            ListModel.SearchKey = "";
+            ListModel.NameKey = "";
+            ListModel.StatusKey = -1;
 
             return Index();
         }
@@ -156,6 +162,29 @@ namespace WatchList.WebClient.Controllers
                 return null;
             }
 
+        }
+
+        public IActionResult AddSeason(int episodesWatched, int episodeAmt, int showId, int order = 0)
+        {
+            var newSeason = new Season { EpisodesWatched = episodesWatched, EpisodeAmt = episodeAmt, ShowId = showId };
+            
+            if(order > 0 && order <= UOW.Seasons.GetSeasonsInOrder(showId).Count())
+            {
+                foreach(var season in UOW.Seasons.GetSeasonsInOrder(showId))
+                {
+                    if(season.Order >= order) season.Order++;
+                }
+                newSeason.Order = order;
+            }
+            else
+            {
+                newSeason.Order = UOW.Seasons.GetSeasonsInOrder(showId).Count() + 1;
+            }
+
+            UOW.Seasons.Add(newSeason);
+            UOW.Complete();
+
+            return ViewSeasons(showId);
         }
     }
 }

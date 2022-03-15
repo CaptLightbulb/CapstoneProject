@@ -68,8 +68,6 @@ C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\De
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.pdb
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\WatchList.WebClient.genruntimeconfig.cache
 C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\AddShow.cshtml.g.cs
-C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewAll.cshtml.g.cs
-C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\AddSeason.cshtml.g.cs
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\appsettings.json
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\WatchList.WebClient.exe
@@ -144,3 +142,9 @@ C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\o
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\CreateSeason.cshtml.g.cs
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewSeasons.cshtml.g.cs
 C:\Users\4400112045\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewShows.cshtml.g.cs
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\WatchList.WebClient.StaticWebAssets.xml
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\Humanizer.dll
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\CreateSeason.cshtml.g.cs
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewSeasons.cshtml.g.cs
+C:\Users\thegr\source\repos\CapstoneProject\WatchList\WatchList.WebClient\obj\Debug\net5.0\Razor\Views\Home\ViewShows.cshtml.g.cs

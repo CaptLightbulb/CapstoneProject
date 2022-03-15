@@ -75,5 +75,32 @@
             </td>
         </tr>
         }
+        <tr class="bg-light">
+            <form asp-action="AddSeason">
+                <td>
+                    <label>Season  </label>
+                    <input type="number" name="order" value="0" />
+                </td>
+                <td>
+                </td>
+                <td>
+                    <input type="number" name="showId" value="@Model.ShowId" hidden="hidden" />
+                </td>
+                <td>
+                    <input type="number" name="episodesWatched" value="0" />
+                </td>
+                <td>
+                    <label>/</label>
+                    <input type="number" name="episodeAmt" value="0" />
+                </td>
+                <td>
+                </td>
+                <td>
+                    <input type="submit" class="btn-dark" value="Add" />
+                </td>
+            </form>
+        </tr>
     </tbody>
 </table>
+
+
