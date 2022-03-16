@@ -9,7 +9,7 @@
 @{string[] StatusList = new string[]{"Watching", "Plan To Watch", "Finished"};}
 
 
-<form asp-action="SearchShow">
+<form asp-action="SearchShow"> <!-- Form to enter search criteria to narrow down results-->
     <label>Sort by Status: </label>
     <select name="statusKey">
         <option value="-1">All</option>
@@ -51,13 +51,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var show in Model.UOW.Shows.GetShowsByStatus(Model.NameKey, Model.StatusKey))
+        @foreach(var show in Model.UOW.Shows.GetShowsByStatus(Model.NameKey, Model.StatusKey)) //makes a table row for every show in the database
             {
         <tr>
             <td class="font-weight-bold">
                 @Html.DisplayFor(modelItem => show.Name)
             </td>
-                <form asp-action="ChangeShowInfo" asp-controller="home">
+                <form asp-action="ChangeShowInfo" asp-controller="home"> <!-- Form to change information about the show-->
                     <td>
                         <select name="ScoreNum">
                             @for(int i = 0; i < 11; i++)
@@ -93,13 +93,13 @@
                     </td>
                 </form>
                     <td>
-                        <form asp-action="ViewSeasons" class="float-left">
+                        <form asp-action="ViewSeasons" class="float-left"> <!-- Form to open up the ViewSeasons page for the selected show-->
                             <input type="number" value="@show.ShowId" name="ShowId" hidden="hidden" />
                             <input type="submit" value="View Seasons" class="btn-dark" />
                         </form>
                     </td>
                     <td>
-                        <form asp-action="DeleteShow" class="float-right">
+                        <form asp-action="DeleteShow" class="float-right"> <!-- Form to delete the show from the database-->
                             <input type="number" hidden="hidden" value="@show.ShowId" name="ShowId" />
                             <input type="Submit" value="Delete" class="btn-danger" />
                         </form>

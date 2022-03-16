@@ -7,7 +7,7 @@ using WatchList.Logic.Models;
 
 namespace WatchList.Logic.Database
 {
-    public class DataSeasonRepository : DataRepository<Season>
+    public class DataSeasonRepository : DataRepository<Season> //Repository class used to access and alter the Seasons in the database with custom defined methods
     {
         WatchListDbContext Context;
 
@@ -16,7 +16,7 @@ namespace WatchList.Logic.Database
             Context = context;
         }
 
-        public IEnumerable<Season> GetSeasonsInOrder(int showId)
+        public IEnumerable<Season> GetSeasonsInOrder(int showId) //sorts seasons of a given show by their order
         {
             var sortedList =
                 from season in Context.Seasons
@@ -27,14 +27,7 @@ namespace WatchList.Logic.Database
             return sortedList;
         }
 
-        public void Add(int showId)
-        {
-            var addSeason = new Season { ShowId = showId };
-            addSeason.Order = GetSeasonsInOrder(showId).Count() + 1;
-            Context.Seasons.Add(addSeason);
-        }
-
-        public Season FindById(int seasonId)
+        public Season FindById(int seasonId) //method to retrieve a Season from the database given its ID
         {
             return Context.Seasons.FirstOrDefault(s => s.SeasonId == seasonId);
         }

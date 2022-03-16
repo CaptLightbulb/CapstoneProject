@@ -19,8 +19,11 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var season in Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId).Where(s => s.EpisodeAmt == 0))
-            {
+        @{
+            Season season = Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId).FirstOrDefault(s => s.EpisodeAmt == 0);  //creates a seperate form for every single season in the given show
+        }
+        @if(season != null)
+        {
         <tr>
             <td>
                 Season @season.Order

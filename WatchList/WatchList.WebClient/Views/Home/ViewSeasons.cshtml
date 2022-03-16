@@ -30,16 +30,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var season in Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId))
+        @foreach (var season in Model.UOW.Seasons.GetSeasonsInOrder(Model.ShowId)) //makes a table row for every season in the selected show
         {
         <tr>
             <td>
                 Season @season.Order
             </td>
-            <form asp-action="ChangeSeason" asp-controller="home">
+            <form asp-action="ChangeSeason" asp-controller="home"> <!-- Form to change information aboutt a season-->
                 <td>
                     <select name="ScoreNum">
-                        @for (int i = 0; i < 11; i++)
+                        @for (int i = 0; i < 11; i++) //dropdown list will look for an option that matches what's already set in the database and make it the selected option
                         {
                             if (season.Score == i)
                             {
@@ -76,7 +76,7 @@
         </tr>
         }
         <tr class="bg-light">
-            <form asp-action="AddSeason">
+            <form asp-action="AddSeason"> <!-- Form used to add a new season into the already existing list-->
                 <td>
                     <label>Season  </label>
                     <input type="number" name="order" value="0" />

@@ -18,6 +18,8 @@ namespace WatchList.Logic.Database
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=WatchListDB");
         }
 
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder) //Remove contraints for deleting objects from database so as to avoid bugs
         {
             foreach(var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))

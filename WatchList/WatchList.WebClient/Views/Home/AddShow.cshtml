@@ -1,7 +1,6 @@
 ﻿@using WatchList.Logic.Models;
 @using WatchList.Logic.Database;
 
-@model WatchList.WebClient.Models.AddShowModel
 
 
 @{
@@ -10,6 +9,7 @@
 
 }
 
+<!-- Form to allow the user to enter information about a show they'd like to add to the database-->
 @using (Html.BeginForm("AddShow", "Home")) {
 
     <fieldset class="w-25">
@@ -31,34 +31,9 @@
             </strong>
         <p>
 
-            <input type="submit" value="Submit" class="btn btn-dark float-right" />
+            <input type="submit" value="Submit" class="btn btn-dark" />
 
         </p>
 
     </fieldset>
-
 }
-
-
-
-
-
-
-
-<!---
-<form asp-action="AddShow" method="get">
-    <label>Name: </label>
-    <input type="text" asp-for="Name" value=""/> <br/>
-
-    <label>Seasons: </label>
-    <input type="number" asp-for="SeasonAmt" value="0" /> <br/>
-
-    <label>Status: </label>
-    <select asp-for="Status" name="SelectedStatus" id="SelectedStatus">
-        <option value="0">Plan To Watch</option>
-        <option value="1">Watching</option>
-        <option value="2">Finished</option>
-    </select> <br/>
-    <input type="submit" value="Submit" class="btn btn-primary" /> 
-</form>
--->

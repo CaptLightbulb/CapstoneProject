@@ -13,7 +13,7 @@ namespace WatchList.Logic.Models
         public int ShowId { get; set; }
         public string Status { get; set; }
         private int statusNum;
-        public int StatusNum //Propertie to change the value of string Status to match the number given
+        public int StatusNum 
         {
             get
             {
@@ -21,7 +21,7 @@ namespace WatchList.Logic.Models
             }
             set
             {
-                switch (value)
+                switch (value) //property setter will adjust the value of the 'Status' string for display purposes any time the int 'StatusNum' is altered
                 {
                     case 1: Status = "Plan To Watch";
                         break;

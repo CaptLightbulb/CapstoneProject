@@ -27,7 +27,7 @@ namespace WatchList.Logic.Models
             }
             set
             {
-                switch (value)
+                switch (value) //property setter will adjust the value of the 'Status' string for display purposes any time the int 'StatusNum' is altered
                 {
                     case 1:
                         Status = "Plan To Watch";

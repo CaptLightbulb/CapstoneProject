@@ -2,7 +2,7 @@
 
 namespace WatchList.WebClient.Models
 {
-    public class AddSeasonModel
+    public class AddSeasonModel //model to hold necessary information for the addiction of user-defined seasons to the database
     {
         public DataUnitOfWork UOW { get; set; }
         public int Order { get; set; }

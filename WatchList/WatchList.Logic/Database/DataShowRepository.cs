@@ -7,7 +7,7 @@ using WatchList.Logic.Models;
 
 namespace WatchList.Logic.Database
 {
-    public class DataShowRepository : DataRepository<Show>
+    public class DataShowRepository : DataRepository<Show> //Repository class used to access and alter the Shows in the database with custom defined methods
     {
         WatchListDbContext Context;
 
@@ -16,12 +16,14 @@ namespace WatchList.Logic.Database
             Context = context;
         }
 
-        public Show Find(int id)
+        public Show Find(int id) //method to retrieve a show given its ID
         {
             return Context.Shows.FirstOrDefault(show => show.ShowId == id);
         }
 
-        public IEnumerable<Show> Find(string name)
+
+
+        public IEnumerable<Show> Find(string name) //method to find a show given its name
         {
             var returnList = new List<Show>();
 
@@ -37,17 +39,11 @@ namespace WatchList.Logic.Database
             return null;
         }
 
-        public IEnumerable<Show> GetShowsByName()
-        {
-            var sortedList =
-                from show in Context.Shows
-                orderby show.Name
-                select show;
 
-            return sortedList;
-        }
 
-        public IEnumerable<Show> GetShowsByStatus(string nameKey = "", int statusKey = -1)
+        //method to retrieve a list of shows sorted by their status
+        //optional parameters to narrow the list of result to particular search criteria
+        public IEnumerable<Show> GetShowsByStatus(string nameKey = "", int statusKey = -1) 
         {
             IQueryable<Show> sortedList;
 

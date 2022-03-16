@@ -30,10 +30,14 @@ namespace WatchList.WebClient.Controllers
             seasonModel = new AddSeasonModel { UOW = UOW};
         }
 
-        public IActionResult Index()
+
+
+        public IActionResult Index() //method to display the main page with the list of shows
         {
             return View("ViewShows", ListModel);
         }
+
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
@@ -41,7 +45,11 @@ namespace WatchList.WebClient.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult AddShow(string Name, int SeasonAmt, string StatusType) //method to add a new show to the database and/or redirect to the 'AddShow' Page
+
+
+        //method to add a new show to the database and/or redirect to the 'AddShow' Page
+        //redirects to the 'CreateSeason' page to initialize information about the seasons in the added show
+        public IActionResult AddShow(string Name, int SeasonAmt, string StatusType)
         {
             if (Name != null)
             {
@@ -67,7 +75,11 @@ namespace WatchList.WebClient.Controllers
             return View();
         }
 
-        public IActionResult DeleteShow(int ShowId)
+
+
+        //method to remove a show from the database
+        //will also delete every season associated with the deleted show
+        public IActionResult DeleteShow(int ShowId) 
         {
             List<Season> seasonList = UOW.Seasons.GetSeasonsInOrder(ShowId).ToList();
             foreach (var season in seasonList)
@@ -80,7 +92,9 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult ChangeShowInfo(int ShowId, string ScoreNum, string StatusType)
+
+
+        public IActionResult ChangeShowInfo(int ShowId, string ScoreNum, string StatusType) //method to alter certain user-defined properties of a show
         {
             UOW.Shows.Find(ShowId).Score = int.Parse(ScoreNum);
             UOW.Shows.Find(ShowId).StatusNum = int.Parse(StatusType);
@@ -91,7 +105,9 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult SearchShow(string statusKey, string nameKey)
+
+
+        public IActionResult SearchShow(string statusKey, string nameKey) //method to narrow the list of shows based on uer-input criteria
         {
             if (nameKey == null) nameKey = "";
 
@@ -101,7 +117,9 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult ResetSearch()
+
+
+        public IActionResult ResetSearch() //method to reset the user-input serach parameters and view the entire list of shows
         {
             ListModel.NameKey = "";
             ListModel.StatusKey = -1;
@@ -109,7 +127,10 @@ namespace WatchList.WebClient.Controllers
             return Index();
         }
 
-        public IActionResult CreateSeason(int EpisodeWatch = 0, int EpisodeNum = 0, int SeasonId = 0)
+
+        //method to initialize key information about a season
+        //presented to the user immediately after adding a new show to the database
+        public IActionResult CreateSeason(int EpisodeWatch = 0, int EpisodeNum = 0, int SeasonId = 0) 
         {
             if(EpisodeNum != 0)
             {
@@ -118,6 +139,7 @@ namespace WatchList.WebClient.Controllers
                 season.EpisodeAmt = EpisodeNum;
                 season.EpisodesWatched = EpisodeWatch;
 
+                UOW.CascadeStatus();
                 UOW.Complete();
 
                 seasonModel.ShowId = season.ShowId;
@@ -126,13 +148,17 @@ namespace WatchList.WebClient.Controllers
             return View("CreateSeason", seasonModel);
         }
 
-        public IActionResult ViewSeasons(int ShowId = 0)
+
+
+        public IActionResult ViewSeasons(int ShowId = 0) //method to bring up the list of seasons for a given show
         {
             ListModel.ShowId = ShowId;
             return View("ViewSeasons",ListModel);
         }
 
-        public IActionResult ChangeSeason(int EpisodeWatch, int SeasonId, int ScoreNum)
+
+
+        public IActionResult ChangeSeason(int EpisodeWatch, int SeasonId, int ScoreNum) //method to change given user-defined information about a season
         {
             var season = UOW.Seasons.FindById(SeasonId);
             season.EpisodesWatched = EpisodeWatch;
@@ -142,7 +168,11 @@ namespace WatchList.WebClient.Controllers
             return ViewSeasons(season.ShowId);
         }
 
-        public IActionResult DeleteSeason(int SeasonId, bool callFromView = true)
+
+
+        //method to remove a season from the database
+        //will automatically adjust the order of other seasons where necessary so as to compensate for this removal
+        public IActionResult DeleteSeason(int SeasonId, bool callFromView = true) 
         {
             var season = UOW.Seasons.FindById(SeasonId);
             foreach (var upperSeason in UOW.Seasons.GetSeasonsInOrder(season.ShowId).Where(s => s.Order > season.Order))
@@ -164,6 +194,11 @@ namespace WatchList.WebClient.Controllers
 
         }
 
+
+
+        //method to add a season from the 'ViewSeason' pages any time after a show is already created
+        //unlike 'CreateSeason' method which uses its own page and is only used immediately after a show is created
+        //if an 'Order' value is specified that already exists, all seasons that have that order value or higher will be increased by one to accomodate
         public IActionResult AddSeason(int episodesWatched, int episodeAmt, int showId, int order = 0)
         {
             var newSeason = new Season { EpisodesWatched = episodesWatched, EpisodeAmt = episodeAmt, ShowId = showId };
@@ -188,7 +223,3 @@ namespace WatchList.WebClient.Controllers
         }
     }
 }
-
-/*
-
-*/
